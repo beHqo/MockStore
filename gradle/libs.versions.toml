@@ -1,0 +1,80 @@
+[versions]
+agp = "8.7.3"
+android-minSdk = "24"
+android-compileSdk = "35"
+android-targetSdk = "35"
+kotlin = "2.1.21"
+compose-multiplatform = "1.8.1"
+coroutines = "1.10.2"
+core = "1.16.0"
+appcompat = "1.7.0"
+activity = "1.10.1"
+lifecycle = "2.9.0"
+navigation = "2.9.0-beta02"
+koin = "4.0.4"
+ktor = "3.1.3"
+coil = "3.2.0"
+androidx-test-ext = "1.2.1"
+androidx-espresso = "3.6.1"
+junit = "4.13.2"
+kotest = "6.0.0.M4"
+
+[libraries]
+androidx-core-ktx = { group = "androidx.core:", name = "core-ktx", version.ref = "core" }
+androidx-appcompat = { group = "androidx.appcompat:", name = "appcompat", version.ref = "appcompat" }
+
+kotlinx-coroutines-core = { group = "org.jetbrains.kotlinx", name = "kotlinx-coroutines-core", version.ref = "coroutines" }
+kotlinx-coroutines-android = { group = "org.jetbrains.kotlinx", name = "kotlinx-coroutines-android", version.ref = "coroutines" }
+
+androidx-activity-compose = { group = "androidx.activity", name = "activity-compose", version.ref = "activity" }
+androidx-lifecycle-runtimeCompose = { group = "org.jetbrains.androidx.lifecycle", name = "lifecycle-runtime-compose", version.ref = "lifecycle" }
+androidx-lifecycle-viewmodel = { group = "org.jetbrains.androidx.lifecycle", name = "lifecycle-viewmodel", version.ref = "lifecycle" }
+androidx-navigation = { group = "org.jetbrains.androidx.navigation", name = "navigation-compose", version.ref = "navigation" }
+
+koin-core = { group = "io.insert-koin", name = "koin-core" ,version.ref = "koin" }
+koin-compose = { group = "io.insert-koin", name = "koin-compose", version.ref = "koin" }
+koin-compose-viewmodel = { group = "io.insert-koin", name = "koin-compose-viewmodel", version.ref = "koin" }
+koin-android = { group = "io.insert-koin", name = "koin-android" ,version.ref = "koin" }
+
+ktor-client-core = { group = "io.ktor", name = "ktor-client-core", version.ref = "ktor" }
+ktor-client-okhttp = { group = "io.ktor", name = "ktor-client-okhttp", version.ref = "ktor" }
+ktor-client-darwin = { group = "io.ktor", name = "ktor-client-darwin", version.ref = "ktor" }
+ktor-client-content-negotiation = { group = "io.ktor", name = "ktor-client-content-negotiation", version.ref = "ktor" }
+ktor-client-logging = { group = "io.ktor", name = "ktor-client-logging", version.ref = "ktor" }
+ktor-serialization-kotlinx-json = { group = "io.ktor", name = "ktor-serialization-kotlinx-json", version.ref = "ktor" }
+
+coil-compose = { group = "io.coil-kt.coil3", name = "coil-compose", version.ref = "coil" }
+coil-ktor = { group = "io.coil-kt.coil3", name = "coil-network-ktor3", version.ref = "coil" }
+
+kotlin-test = { group = "org.jetbrains.kotlin", name = "kotlin-test", version.ref = "kotlin" }
+androidx-testExt-junit = { group = "androidx.test.ext", name = "junit", version.ref = "androidx-test-ext" }
+kotlin-testJunit = { group = "org.jetbrains.kotlin", name = "kotlin-test-junit", version.ref = "kotlin" }
+junit = { group = "junit", name = "junit", version.ref = "junit" }
+androidx-espresso-core = { group = "androidx.test.espresso", name = "espresso-core", version.ref = "androidx-espresso" }
+koin-test = { group = "io.insert-koin", name = "koin-test" ,version.ref = "koin" }
+kotest-assertion = { group = "io.kotest", name = "kotest-assertions-core" ,version.ref = "kotest" }
+
+[plugins]
+kotlin-multiplatform = { id = "org.jetbrains.kotlin.multiplatform", version.ref = "kotlin" }
+compose-multiplatform = { id = "org.jetbrains.compose", version.ref = "compose-multiplatform" }
+compose-compiler = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin" }
+kotlin-serialization = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "kotlin" }
+android-application = { id = "com.android.application", version.ref = "agp" }
+android-library = { id = "com.android.library", version.ref = "agp" }
+
+[bundles]
+ktor = [
+    "ktor-client-core",
+    "ktor-client-content-negotiation",
+    "ktor-client-logging",
+    "ktor-serialization-kotlinx-json",
+]
+koin = [
+    "koin-core",
+    "koin-compose",
+    "koin-compose-viewmodel"
+]
+coil = [
+    "coil-compose",
+    "coil-ktor"
+]
