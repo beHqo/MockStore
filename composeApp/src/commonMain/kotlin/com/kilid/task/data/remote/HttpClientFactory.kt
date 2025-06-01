@@ -2,7 +2,6 @@ package com.kilid.task.data.remote
 
 import com.kilid.task.domain.Log
 import io.ktor.client.HttpClient
-import io.ktor.client.plugins.ClientRequestException
 import io.ktor.client.plugins.HttpResponseValidator
 import io.ktor.client.plugins.HttpTimeout
 import io.ktor.client.plugins.ResponseException
@@ -46,11 +45,12 @@ object HttpClientFactory {
 
         expectSuccess = true
 
+
         HttpResponseValidator {
             handleResponseExceptionWithRequest { exception, request ->
-                val clientException = exception as? ClientRequestException
-                    ?: return@handleResponseExceptionWithRequest
-                val exceptionResponse = clientException.response
+                val responseException =
+                    exception as? ResponseException ?: return@handleResponseExceptionWithRequest
+                val exceptionResponse = responseException.response
                 val exceptionResponseStatus = exceptionResponse.status
 
                 throw ResponseException(
@@ -62,7 +62,7 @@ object HttpClientFactory {
 
         install(HttpTimeout) {
             connectTimeoutMillis = 40_000
-            requestTimeoutMillis = 20_000
+            requestTimeoutMillis = 2_000
         }
     }
 }

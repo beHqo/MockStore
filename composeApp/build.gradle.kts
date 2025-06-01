@@ -10,11 +10,14 @@ plugins {
 }
 
 kotlin {
+    @OptIn(ExperimentalKotlinGradlePluginApi::class)
+    compilerOptions {
+        freeCompilerArgs.add("-Xexpect-actual-classes") // expect/actual for classes is in beta
+    }
+
     androidTarget {
-        @OptIn(ExperimentalKotlinGradlePluginApi::class)
         compilerOptions {
             jvmTarget.set(JvmTarget.JVM_11)
-            freeCompilerArgs.add("-Xexpect-actual-classes") // expect/actual for classes is in beta
         }
     }
     
