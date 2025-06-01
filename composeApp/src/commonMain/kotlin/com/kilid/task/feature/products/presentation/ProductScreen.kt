@@ -44,7 +44,10 @@ import org.jetbrains.compose.ui.tooling.preview.Preview
 import org.koin.compose.viewmodel.koinViewModel
 
 @Composable
-fun ProductScreen(vm: ProductsViewModel = koinViewModel()) {
+fun ProductScreen(
+    vm: ProductsViewModel = koinViewModel(),
+    navigateToProductDetails: (Int) -> Unit
+) {
     val productsResult = vm.products.collectAsStateWithLifecycle().value
 
     val selectedCategory by vm.selectedCategory.collectAsStateWithLifecycle()
@@ -88,7 +91,7 @@ fun ProductScreen(vm: ProductsViewModel = koinViewModel()) {
                     verticalArrangement = Arrangement.spacedBy(8.dp)
                 ) {
                     items(productsResult.data, key = { it.id }) { product ->
-                        ProductCard(product = product) { /*TODO: navigate to details*/ }
+                        ProductCard(product = product) { navigateToProductDetails(product.id) }
                     }
                 }
             }
