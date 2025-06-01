@@ -45,7 +45,6 @@ object HttpClientFactory {
 
         expectSuccess = true
 
-
         HttpResponseValidator {
             handleResponseExceptionWithRequest { exception, request ->
                 val responseException =
@@ -62,7 +61,7 @@ object HttpClientFactory {
 
         install(HttpTimeout) {
             connectTimeoutMillis = 40_000
-            requestTimeoutMillis = 2_000
+            requestTimeoutMillis = 20_000
         }
     }
 }

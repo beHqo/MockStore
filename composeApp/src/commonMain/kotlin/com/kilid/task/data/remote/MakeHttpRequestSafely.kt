@@ -4,6 +4,8 @@ import com.kilid.task.domain.Log
 import com.kilid.task.domain.model.Result
 import io.ktor.client.call.body
 import io.ktor.client.network.sockets.ConnectTimeoutException
+import io.ktor.client.network.sockets.SocketTimeoutException
+import io.ktor.client.plugins.HttpRequestTimeoutException
 import io.ktor.client.plugins.ResponseException
 import io.ktor.client.statement.HttpResponse
 import kotlinx.serialization.SerializationException
@@ -49,15 +51,23 @@ suspend inline fun <reified T> makeHttpRequestSafely(
 } catch (e: ResponseException) {
     Log.e(logTag, "Failed to make http request", e)
 
-    Result.Error(e.message ?: "Unknown error")
+    Result.Error(e.message ?: "Failed to make http request due to an unknown error")
+} catch (e: HttpRequestTimeoutException) {
+    Log.e(logTag, "HTTP request timed out has exceeded", e)
+
+    Result.Error("HTTP request timed out has exceeded")
+} catch (e: ConnectTimeoutException) {
+    Log.e(logTag, "Connection timed out has exceeded", e)
+
+    Result.Error("Connection timed out has exceeded")
+} catch (e: SocketTimeoutException) {
+    Log.e(logTag, "Socket timed out has exceeded", e)
+
+    Result.Error("Socket timed out has exceeded")
 } catch (e: SerializationException) {
     Log.e(logTag, "Failed to deserialize data", e)
 
-    Result.Error(e.message ?: "Unknown error")
-} catch (e: ConnectTimeoutException) {
-    Log.e(logTag, "HTTP request timed out", e)
-
-    Result.Error(e.message ?: "Unknown error")
+    Result.Error("Failed to deserialize data")
 } catch (e: IOException) {
     Log.e(logTag, "Failed to make HTTP request due to IO error", e)
 
