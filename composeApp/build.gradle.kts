@@ -7,6 +7,7 @@ plugins {
     alias(libs.plugins.compose.multiplatform)
     alias(libs.plugins.kotlin.serialization)
     alias(libs.plugins.android.application)
+    alias(libs.plugins.dev.mokkery)
 }
 
 kotlin {
@@ -67,9 +68,13 @@ kotlin {
             implementation(libs.ktor.client.darwin)
         }
         commonTest.dependencies {
+            implementation(kotlin("test-annotations-common"))
+
             implementation(libs.kotlin.test)
+            implementation(libs.junit)
             implementation(libs.koin.test)
             implementation(libs.kotest.assertion)
+            implementation(libs.turbine)
         }
     }
 }
