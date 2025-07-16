@@ -28,4 +28,11 @@ class ProductsApi(
         return@withContext makeHttpRequestSafely<List<ProductDTO>>(TAG) { httpClient.get(endpoint) }
             .map { list -> list.map { productDTO -> productDTO.toDomainModel() } }
     }
+
+    override suspend fun fetchProductDetails(productId: Int): Result<Product> =
+        withContext(ioDispatcher) {
+            return@withContext makeHttpRequestSafely<ProductDTO>(TAG) {
+                httpClient.get("${PRODUCTS_ENDPOINT}/$productId")
+            }.map { dto -> dto.toDomainModel() }
+        }
 }

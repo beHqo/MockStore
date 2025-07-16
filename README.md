@@ -1,4 +1,4 @@
-# MockSctoreCMP
+# MockStoreCMP
 
 A Compose Multiplatform application that fetches product data from a mock backend (FakeStoreAPI) and
 presents it on a scrollable, filterable UI. The app demonstrates clean architecture principles with
@@ -66,23 +66,23 @@ Android and iOS. Key packages in commonMain include:
 
 ## Libraries Used
 
-- [**AndroidX Lifecycle ViewModel
-  **](https://developer.android.com/jetpack/androidx/releases/lifecycle)  
-  Provides Compose Multiplatform specific ViewModel support while maintaining lifecycle awareness on
-  Android.
-
-- [**AndroidX Navigation Compose
-  **](https://developer.android.com/jetpack/androidx/releases/navigation)  
-  Simplifies navigation between composables with a declarative API.
-
 - [**Koin**](https://github.com/InsertKoinIO/koin)  
-  Lightweight dependency injection framework for Kotlin Multiplatform.
+  Lightweight dependency injection framework.
 
-- [**Ktor**](https://github.com/ktorio/ktor)  
+- [**Ktor**](https://ktor.io/)  
   Asynchronous HTTP client, used with the OkHttp Engine on Android and Darwin Engine on iOS.
 
 - [**Coil**](https://github.com/coil-kt/coil)  
-  Image loading library with Ktor integration.
+  Image loading library.
+
+- [**Common ViewModel
+  **](https://central.sonatype.com/artifact/org.jetbrains.androidx.lifecycle/lifecycle-viewmodel)  
+  Provides multiplatform ViewModel support while maintaining lifecycle awareness on
+  Android.
+
+- [**JetBrains' Navigation
+  **](https://central.sonatype.com/artifact/org.jetbrains.androidx.navigation/navigation-compose)  
+  Simplifies navigation between composables.
 
 ## Future Improvements
 
@@ -115,6 +115,6 @@ To run the project locally, follow these steps:
 
 - **Run the App**
 
-    - Choose your desired run configuration (e.g., Android emulator or physical device).
+    - Choose your desired run configuration.
     - Click the green Run ▶️ button in the toolbar.
     - The app should build and launch, displaying the product list.

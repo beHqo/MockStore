@@ -4,9 +4,11 @@ import com.kilid.task.di.IO_DISPATCHER
 import com.kilid.task.feature.products.data.remote.ProductsApi
 import com.kilid.task.feature.products.data.repository.ProductsRepository
 import com.kilid.task.feature.products.domain.api.IProductsApi
+import com.kilid.task.feature.products.domain.interactor.FetchProductDetailsUseCase
 import com.kilid.task.feature.products.domain.interactor.FetchProductsUseCase
 import com.kilid.task.feature.products.domain.repository.IProductsRepository
-import com.kilid.task.feature.products.presentation.ProductsViewModel
+import com.kilid.task.feature.products.presentation.product_details.ProductDetailsViewModel
+import com.kilid.task.feature.products.presentation.products.ProductsViewModel
 import org.koin.core.module.dsl.bind
 import org.koin.core.module.dsl.factoryOf
 import org.koin.core.module.dsl.singleOf
@@ -23,5 +25,9 @@ val productsModule = module {
 
     factoryOf(::FetchProductsUseCase)
 
+    factoryOf(::FetchProductDetailsUseCase)
+
     viewModelOf(::ProductsViewModel)
+
+    viewModelOf(::ProductDetailsViewModel)
 }

@@ -14,4 +14,7 @@ class ProductsRepository(private val productsApi: IProductsApi) : IProductsRepos
 
         emit(productsApi.fetchProducts(category))
     }
+
+    override suspend fun fetchProductDetails(productId: Int): Result<Product> =
+        productsApi.fetchProductDetails(productId)
 }
